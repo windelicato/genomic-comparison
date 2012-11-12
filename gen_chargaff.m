@@ -3,7 +3,7 @@ function outs = gen_chargaff(data)
 	
 	l = length(data);
 
-	totals = zeros(l,l);
+	totals = zeros(l,4);
 	for i=1:length(data)
 
 		totals(i,1) = sum(data{i} == 'A');

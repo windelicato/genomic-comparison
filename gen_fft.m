@@ -41,12 +41,18 @@ function outs = gen_fft(data)
 			xlabel('k')
 		end
 
-		Gtotal= abs(Xa).^2 + abs(Xt).^2 + abs(Xg).^2 + abs(Xc).^2;
-		figure (i+l);
-		stem(Gtotal)
+		Gtotal = abs(Xa).^2 + abs(Xt).^2 + abs(Xg).^2 + abs(Xc).^2;
+%		figure (i+l);
+%		stem(Gtotal)
+%		grid
+%		xlabel('k');
+%		ylabel('|Xtotal[k]^2|');
+%		title(sprintf('FFT Totals for sequence # %d',i));
+		figure(80);
+		subplot(l,1,i);
+		stem(Gtotal);
 		grid
-		xlabel('k');
-		ylabel('|Xtotal[k]^2|');
-		title(sprintf('FFT Totals for sequence # %d',i));
+		xlabel('k')
+		ylabel('|Xa|')
 
 	end
