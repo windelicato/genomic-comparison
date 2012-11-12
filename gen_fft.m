@@ -1,6 +1,7 @@
 function outs = gen_fft(data)
 	disp('Calculating FFT of all sequences in input');
 	verbose = input('Show FFT for individual nucleotides? Y/N     ','s');
+	group = input('Group results into one graph? Y/N	','s');
 	l = length(data);		
 	for i=1:l
 		A = data{i} == 'A';
@@ -42,17 +43,21 @@ function outs = gen_fft(data)
 		end
 
 		Gtotal = abs(Xa).^2 + abs(Xt).^2 + abs(Xg).^2 + abs(Xc).^2;
-%		figure (i+l);
-%		stem(Gtotal)
-%		grid
-%		xlabel('k');
-%		ylabel('|Xtotal[k]^2|');
-%		title(sprintf('FFT Totals for sequence # %d',i));
-		figure(80);
-		subplot(l,1,i);
-		stem(Gtotal);
-		grid
-		xlabel('k')
-		ylabel('|Xa|')
+		if(group == 'N' || group == 'n')
+			figure (i+l);
+			stem(Gtotal)
+			grid
+			xlabel('k');
+			ylabel('|Xtotal[k]^2|');
+			title(sprintf('FFT Totals for sequence # %d',i));
+		else
+			figure(80);
+			subplot(l,1,i);
+			stem(Gtotal);
+			grid
+			xlabel('k')
+			ylabel('|Xa|')
+			title(sprintf('FFT Totals',i));
+		end
 
 	end
