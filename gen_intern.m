@@ -62,6 +62,18 @@ function outs = gen_intern(data)
 	    % Calculate unnormalized Euclidean distance
 	    DistUnNorm = sqrt(sum(sum((X1-X2).^2)))
 
+	    figure(1)
+		subplot(2,1,1);
+		bar(X1);
+		xlabel('Distance ( A T C G )');
+		ylabel('Count');
+		title(sprintf('Unormalized Nucleotoid Distances for Gene #%d',x))
+		subplot(2,1,2);
+		bar(X2);
+		xlabel('Distance ( A T C G )');
+		ylabel('Count');
+		title(sprintf('Unormalized Nucleotoid Distances for Gene #%d',y))
+
 
 	    % Normalize X matrices by columns (IND value)
 	    colSums1 = sum(X1, 1);
@@ -80,6 +92,17 @@ function outs = gen_intern(data)
 
 	    X1_NormRow = X1 ./ repmat(rowSums1, [1 size(X1,2)]);
 	    X2_NormRow = X2 ./ repmat(rowSums2, [1 size(X2,2)]);
+	    figure(2)
+		subplot(2,1,1);
+		bar(X1_NormRow);
+		xlabel('Distance ( A T C G )');
+		ylabel('Normalized Count');
+		title(sprintf('Normalized Nucleotoid Distances for Gene #%d',x))
+		subplot(2,1,2);
+		bar(X2_NormRow);
+		xlabel('Distance ( A T C G )');
+		ylabel('Normalized Count');
+		title(sprintf('Normalized Nucleotoid Distances for Gene #%d',y))
 
 	    % Calculate Euclidean distance for this method
 	    DistNormRow = sqrt(sum(sum((X1_NormRow-X2_NormRow).^2)))

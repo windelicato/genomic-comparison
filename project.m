@@ -50,7 +50,7 @@ while(true)
 		case 0
 			break;
 		case 1
-			outs = gen_chargaff(data);
+			gen_chargaff(data);
 		case 2
 			gen_fft(data);
 		case 3
